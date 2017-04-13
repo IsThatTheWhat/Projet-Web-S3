@@ -13,6 +13,12 @@ class OrderController extends Controller
         return view('admin.order.index', compact('orders'));
     }
 
+    public function show($id){
+        $order = Order::with('users')->find($id);
+        $products = $order->products()->get(['name', 'photo', 'quantity']);
+        return view('admin.order.show', compact('order', 'products'));
+    }
+
     public function changeState($id){
         $order = Order::find($id);
         $order->update(['state_id' => 2]);

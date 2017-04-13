@@ -13,6 +13,6 @@ class OrderController extends Controller
         foreach ($orders as $order) {
             $products[$order->id] = $order->products()->get(['name', 'photo', 'quantity']);
         }
-        return view('order.index', compact('orders', 'products', 'states'));
+        return view('order.index', compact('orders', 'products'));
     }
 }

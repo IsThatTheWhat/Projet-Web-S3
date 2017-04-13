@@ -34,7 +34,7 @@ class AllowUserToComment
                 ['user_id', '=', Auth::id()],
                 ['product_id', '=', $item['id']]
             ])->first();
-            if ($allow){
+            if (!$allow){
                 $product = Product::find($item['id']);
                 $event->user->allows()->attach($product);
             }

@@ -93,5 +93,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
  */
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('order', 'Admin\OrderController@index')->name('admin.order.index');
+    Route::get('order/{id}', 'Admin\OrderController@show')->name('admin.order.show')->where('id', '[0-9]+');
     Route::put('order/state/{id}', 'Admin\OrderController@changeState')->name('order.state')->where('id', '[0-9]+');
 });

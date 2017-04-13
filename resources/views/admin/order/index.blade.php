@@ -39,15 +39,7 @@
                             @endif
                         </td>
                         <td>
-                            @if($order->state_id == 1)
-                                <div class="col-sm-3">
-                                    <form method="post" action="{{ route('order.state', $order->id) }}">
-                                        <input type="hidden" id="_method" name="_method" value="PUT"/>
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-primary">Change State</button>
-                                    </form>
-                                </div>
-                            @endif
+                            <a href="{{ route('admin.order.show', $order->id) }}" class="btn btn-primary">View Order</a>
                         </td>
                     </tr>
                 @endforeach

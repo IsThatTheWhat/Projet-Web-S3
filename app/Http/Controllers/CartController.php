@@ -89,6 +89,11 @@ class CartController extends Controller
      */
     public function plus($id){
         $key = $this->findSessionKeyFromId($id);
+        if ( ($res = $this->testQuantity($key)) ){
+            return redirect()
+                ->back()
+                ->with('error', 'The quantity asked for the product : <strong>' . $res . '</strong> is higher than the quantity available !');
+        }
         $value = session("cart.$key.quantity");
         session(["cart.$key.quantity" => $value + 1]);
         return redirect()->back();
@@ -117,12 +122,12 @@ class CartController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function purchase(){
-        $res = $this->testQuantity();
+        /*$res = $this->testQuantity();
         if ($res){
             return redirect()
                 ->back()
                 ->with('error', 'The quantity asked for the product : <strong>' . $res . '</strong> is higher than the quantity available !');
-        }
+        }*/
 
         if (!Auth::user()->address){
             return redirect()
@@ -184,13 +189,20 @@ class CartController extends Controller
     /**
      * tests if the quantity asked is less than the product's quantity
      *
+     * @param null $key
      * @return null
      */
-    private function testQuantity(){
-        foreach (session('cart') as $item) {
-            $product = Product::where('id', $item['id'])->select(['name', 'stock'])->first();
+    private function testQuantity($key = null){
+        if ($key){
+            $product = Product::where('id', session('cart.'.$key)['id'])->select(['name', 'stock'])->first();
             $quantity = $product->stock;
-            if ($item['quantity'] > $quantity) { return $product->name; }
+            if (session('cart.'.$key)['quantity'] >= $quantity) { return $product->name; }
+        } else {
+            foreach (session('cart') as $item) {
+                $product = Product::where('id', $item['id'])->select(['name', 'stock'])->first();
+                $quantity = $product->stock;
+                if ($item['quantity'] >= $quantity) { return $product->name; }
+            }
         }
         return null;
     }
