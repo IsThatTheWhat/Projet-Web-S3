@@ -1,0 +1,63 @@
+
+.products {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.products a{
+    margin-top: 55px;
+}
+
+.products button{
+    margin-top: 55px;
+}
+
+.product__view_btn {
+    margin-bottom: 10px;
+}
+
+.cart-links a {
+    padding-right: 30px;
+}
+
+.cart-products {
+    margin-top: 30px;
+}
+
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.admin__add_product{
+    margin-bottom: 30px;
+}
+
+.admin__show_control_btn {
+    margin-bottom: 50px;
+}
+
+.comment__title {
+    height: 60px;
+}
+
+.profile {
+    border-bottom: 2px solid #000000 ;
+}
+
+.profile_btn {
+    margin-top: 30px;
+}
+
+.profile__update {
+    margin-bottom: 30px;
+}
+
+.media-object {
+    height: 40px;
+    width: 40px;
+}
+
+.media-body {
+    padding-top: 10px;
+}
