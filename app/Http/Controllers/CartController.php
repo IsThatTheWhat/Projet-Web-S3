@@ -192,18 +192,10 @@ class CartController extends Controller
      * @param null $key
      * @return null
      */
-    private function testQuantity($key = null){
-        if ($key){
-            $product = Product::where('id', session('cart.'.$key)['id'])->select(['name', 'stock'])->first();
-            $quantity = $product->stock;
-            if (session('cart.'.$key)['quantity'] >= $quantity) { return $product->name; }
-        } else {
-            foreach (session('cart') as $item) {
-                $product = Product::where('id', $item['id'])->select(['name', 'stock'])->first();
-                $quantity = $product->stock;
-                if ($item['quantity'] >= $quantity) { return $product->name; }
-            }
-        }
+    private function testQuantity($key){
+        $product = Product::where('id', session('cart.'.$key)['id'])->select(['name', 'stock'])->first();
+        $quantity = $product->stock;
+        if (session('cart.'.$key)['quantity'] >= $quantity) { return $product->name; }
         return null;
     }
 

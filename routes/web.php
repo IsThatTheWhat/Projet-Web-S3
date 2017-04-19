@@ -23,6 +23,7 @@ Auth::routes();
  */
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/product/{id}', 'HomeController@show')->name('show')->where('id', '[0-9]+');
+Route::post('/search', 'HomeController@search')->name('search');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/comment/{id}', 'HomeController@addComment')->name('comment')->where('id', '[0-9]+');
     Route::post('/comment/{id}', 'HomeController@setComment')->where('id', '[0-9]+');

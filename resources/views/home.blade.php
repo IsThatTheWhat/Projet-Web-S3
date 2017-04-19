@@ -3,9 +3,31 @@
 @section('title', 'Home')
 
 @section('content')
+
+    <!-- Search Bar -->
+    @include('searchbar.searchbar')
+    <!-- /Search Bar -->
+
     <div class="container">
-        <h3> {{ $products->total() }} product(s) in total</h3>
-        <h4> {{ $products->count() }} product(s) in this page</h4>
+        @if(!isset($search))
+            <h3> {{ $products->total() }} product(s) in total</h3>
+            <h4> {{ $products->count() }} product(s) in this page</h4>
+        @else
+            <div id="search_recap" class="row">
+                <div class="col-sm-11 col-sm-offset-1">
+                    <h3>
+                        {{ $products->total() }} product(s) for
+                        @if(sizeof($search) != 2)
+                            <span class="label label-primary">{{ $search }}</span>
+                        @else
+                            @foreach($search as $name)
+                                <span class="label label-primary">{{ $name }}</span>
+                            @endforeach
+                        @endif
+                    </h3>
+                </div>
+            </div>
+        @endif
         <div class="row">
             @forelse($products as $product)
                 <div class="col-sm-6 col-md-4">
