@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         /*factory(App\TypeProduct::class, 5)->create();
 
-        factory(App\Product::class, 15)->create();
+        factory(App\Product::class, 15)->create();*/
 
         State::create([
             'name' => 'A preparer'
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Expedier'
         ]);
 
-        User::create([
+        /*User::create([
             'name' => 'yan',
             'email' => 'yan@yan.com',
             'password' => bcrypt('123456')
