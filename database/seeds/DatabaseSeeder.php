@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TypeProduct::class, 5)->create();
+        /*factory(App\TypeProduct::class, 5)->create();
 
         factory(App\Product::class, 15)->create();
 
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'yan',
             'email' => 'yan@yan.com',
             'password' => bcrypt('123456')
-        ]);
+        ]);*/
 
         Admin::create([
             'name' => 'admin',

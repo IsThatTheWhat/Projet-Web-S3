@@ -42,6 +42,7 @@ class ProductController extends Controller
      */
     public function store(ProductAddFormRequest $request)
     {
+        dd($request);
         if ($request->file){
             $filename = $this->addPhoto($request->file);
 
