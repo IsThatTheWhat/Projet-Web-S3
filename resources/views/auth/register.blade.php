@@ -60,6 +60,8 @@
                             </div>
                         </div>
 
+                        <div class="g-recaptcha" data-sitekey="6Lf7_CIUAAAAAH_eK2WW1tcQOSLoHggqfhzHU32U"></div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

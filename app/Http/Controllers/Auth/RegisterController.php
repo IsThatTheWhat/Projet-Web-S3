@@ -6,9 +6,11 @@ use App\Cart;
 use App\Order;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use GuzzleHttp\Client;
 
 class RegisterController extends Controller
 {
@@ -54,6 +56,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'g-recaptcha-response' => 'required|',
         ]);
     }
 
@@ -70,5 +73,36 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $client = new Client();
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret' => '6Lf7_CIUAAAAAD81jzizQZUyjHKRiCLvMVkK6WSl',
+                'response' => $request->input('g-recaptcha-response')
+            ]
+        ]);
+        $result = json_decode($response->getBody()->getContents());
+
+        if (!$result->success){
+            return redirect($this->redirectPath());
+        }
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 }

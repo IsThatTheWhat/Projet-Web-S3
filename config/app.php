@@ -179,6 +179,7 @@ return [
         AdamWathan\BootForms\BootFormsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'BootForm' => AdamWathan\BootForms\Facades\BootForm::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];
