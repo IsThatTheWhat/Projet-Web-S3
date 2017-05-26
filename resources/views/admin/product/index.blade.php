@@ -36,9 +36,9 @@
                         <td>{{ $product->price }} €</td>
                         <td>
                             @if($product->available == 1)
-                                Yes
+                                <span>Yes</span>
                             @else
-                                No
+                                <strong><span class="bg-danger text-danger">No</span></strong>
                             @endif
                         </td>
                         <td>{{ $product->stock }}</td>
