@@ -37,6 +37,7 @@
                             <h3>{{ $product->name }}</h3>
                             <h3>Price : {{ $product->price }} $</h3>
                             <h3>Category : {{ $product->types->name }}</h3>
+                            <h3>Quantity : {{ $product->stock }} products</h3>
                             <a href="{{ action('HomeController@show', $product->id) }}" class="btn btn-primary product__view_btn">View</a>
                             <div class="row">
                                 <div class="col-sm-6">

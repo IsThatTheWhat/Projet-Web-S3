@@ -13,6 +13,7 @@
                 <div class="well">
                     <h3><strong>Category :</strong> {{ $product->types->name }}</h3>
                     <h3><strong>Price :</strong> {{ $product->price }} €</h3>
+                    <h3><strong>Quantity :</strong> {{ $product->stock }}</h3>
                 </div>
 
                 <div class="page-header text-left">
@@ -38,14 +39,6 @@
                                     @endif
                                 </div>
                             </div>
-                            {{--<h3 class="panel-title pull-left">{{ $comment->users->name }} <small>{{ $comment->created_at }}</small></h3>
-                            @if($comment->users->id == Auth::id())
-                                <form method="post" action="{{ route('comment.destroy', $comment->id ) }}">
-                                    <input type="hidden" id="_method" name="_method" value="DELETE"/>
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button type="submit" class="close"><span aria-hidden="true">X</span></button>
-                                </form>
-                            @endif--}}
                         </div>
                         <div class="panel-body text-left">
                             {!! $comment->content !!}
