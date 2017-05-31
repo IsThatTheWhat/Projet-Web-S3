@@ -32,7 +32,20 @@ class HomeController extends Controller
      */
     public function show($id){
         $product = Product::with('comments')->find($id);
+        session()->forget('last_product');
+        session(['last_product' => [
+            'id' => $id,
+            'photo' => $product->photo,
+            'name' => $product->name,
+            'category' => $product->types->name,
+        ]]);
         return view('product.show', compact('product'));
+    }
+
+    public function clearLastProductFromSession(){
+        session()->forget('last_product');
+        //dd(session('last_product'));
+        return redirect()->back();
     }
 
     /**

@@ -122,6 +122,10 @@
         @yield('content')
         <!-- /content -->
 
+        <!-- Last Product viewed -->
+        @include('lastProduct.lastProduct')
+        <!-- /Last Product viewed -->
+
     </div>
 
     <!-- Scripts -->
@@ -133,5 +137,6 @@
             crossorigin="anonymous">
 
     </script>
+    <script src="{{asset("js/myjs.js")}}"></script>
 </body>
 </html>

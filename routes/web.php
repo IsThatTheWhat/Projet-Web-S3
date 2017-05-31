@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Middleware\ForgetLastProduct;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +25,7 @@ Auth::routes();
  */
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/product/{id}', 'HomeController@show')->name('show')->where('id', '[0-9]+');
+Route::get('/close_last_product', 'HomeController@clearLastProductFromSession')->middleware(ForgetLastProduct::class)->name('clearLP');
 Route::post('/search', 'HomeController@search')->name('search');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/comment/{id}', 'HomeController@addComment')->name('comment')->where('id', '[0-9]+');

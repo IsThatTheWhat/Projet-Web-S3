@@ -73,3 +73,41 @@
 #search_recap {
     margin-bottom: 20px;
 }
+
+/*-------------------  Compare ------------------------*/
+.compareBar {
+    width: 100%;
+    position: fixed;
+    bottom: -300px;
+    background-color: rgba(0,0,0,.7);
+    z-index: 9001;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: bottom .5s;
+}
+
+/*@media (min-width: 768px) {
+    .compareBar {
+        bottom: -600px;
+    }
+}*/
+
+.compareBar.show {
+    bottom: 0px;
+    left: 0px;
+    transition: bottom .5s;
+}
+
+#btn_close{
+    color: white;
+}
+
+#media_photo{
+    width: 200px;
+    height: 75px;
+}
+
+#compareBar {
+    color: white;
+}
+/*-------------------  Compare ------------------------*/
