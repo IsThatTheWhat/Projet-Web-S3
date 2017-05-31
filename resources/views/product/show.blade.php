@@ -14,6 +14,11 @@
                     <h3><strong>Category :</strong> {{ $product->types->name }}</h3>
                     <h3><strong>Price :</strong> {{ $product->price }} €</h3>
                     <h3><strong>Quantity :</strong> {{ $product->stock }}</h3>
+                    @if($product->available == 1)
+                        <a href="{{ action('CartController@add', $product->id) }}" class="btn btn-success">Add To Cart</a>
+                    @else
+                        <button class="btn btn-danger">Not Available Now</button>
+                    @endif
                 </div>
 
                 <div class="page-header text-left">
