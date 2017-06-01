@@ -12,7 +12,6 @@ Ce projet contient les implémentations suivantes :
 - Utilisation de WYSIWYG et gestion des White List avec "Purifier"
 
 - Upload d'image et gestion des images avec la librairie "Image"
--
 
 ## Administration
 url : localhost/admin
